@@ -4,11 +4,13 @@ A modern, containerized Cybersecurity & SecOps auditing dashboard for **Windows 
 
 The backend runs inside an **Ubuntu 22.04 LTS Docker container on WSL 2**, exposing a high-performance REST API and serving the React frontend on a **fixed port: `8090`** (with fallback alias `8088`).
 
+![Windows Firewall Security Check Dashboard](docs/images/dashboard-preview.png)
+
 ---
 
 ## 🚀 Quick Start (1-Click Automation)
 
-You can launch the entire stack—build the container, start the backend on port 8080, verify health, and automatically launch Google Chrome—with a single script:
+You can launch the entire stack—build the container, start the backend on port 8090, verify health, and automatically launch Google Chrome—with a single script:
 
 ### Option A: Windows Batch File (Double-Click)
 Double-click or run from Command Prompt:
