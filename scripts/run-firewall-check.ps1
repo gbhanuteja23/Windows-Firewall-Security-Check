@@ -11,7 +11,7 @@
 #>
 
 $ErrorActionPreference = 'Stop'
-$FixedPort = 8080
+$FixedPort = 8090
 $ContainerName = "windows-firewall-backend"
 $ImageName = "windows-firewall-security-check:latest"
 $AppUrl = "http://localhost:$FixedPort"

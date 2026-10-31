@@ -12,7 +12,7 @@
 
 [CmdletBinding()]
 param(
-    [string]$ApiUrl = "http://localhost:8080/api/audit/scan",
+    [string]$ApiUrl = "http://localhost:8090/api/audit/scan",
     [switch]$Upload = $false,
     [string]$OutputFile = "windows_firewall_export.json"
 )

@@ -9,7 +9,8 @@ services:
     container_name: windows-firewall-backend
     restart: unless-stopped
     ports:
-      - "8080:8080"
+      - "8090:8080"
+      - "8088:8080"
     environment:
       - PORT=8080
       - HOST=0.0.0.0

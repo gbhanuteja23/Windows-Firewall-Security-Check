@@ -126,7 +126,7 @@ export default function App() {
             <span>WSL 2 Ubuntu 22.04 Dockerized SecOps Tool</span>
           </div>
           <div className="flex items-center space-x-4">
-            <span className="font-mono text-slate-400">Fixed Port: :8080</span>
+            <span className="font-mono text-slate-400">Fixed Port: :8090</span>
             <span className="font-mono text-emerald-400 flex items-center gap-1">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400"></span> Container Active
             </span>

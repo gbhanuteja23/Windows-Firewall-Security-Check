@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-PORT=${PORT:-8080}
+PORT=${PORT:-8090}
 CONTAINER_NAME="windows-firewall-backend"
 IMAGE_NAME="windows-firewall-security-check:latest"
 

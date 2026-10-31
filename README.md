@@ -2,7 +2,7 @@
 
 A modern, containerized Cybersecurity & SecOps auditing dashboard for **Windows Defender Firewall with Advanced Security**.
 
-The backend runs inside an **Ubuntu 22.04 LTS Docker container on WSL 2**, exposing a high-performance REST API and serving the React frontend on a **fixed port: `8080`**.
+The backend runs inside an **Ubuntu 22.04 LTS Docker container on WSL 2**, exposing a high-performance REST API and serving the React frontend on a **fixed port: `8090`** (with fallback alias `8088`).
 
 ---
 
@@ -25,9 +25,9 @@ powershell -ExecutionPolicy Bypass -File scripts\run-firewall-check.ps1
 Both scripts automatically:
 1. Verify the Docker daemon is running on WSL 2.
 2. Build the Ubuntu 22.04 container image `windows-firewall-security-check:latest`.
-3. Start the container `windows-firewall-backend` bound to **fixed port `8080`**.
-4. Poll `http://localhost:8080/api/health` until healthy.
-5. Automatically open **Google Chrome** to `http://localhost:8080`.
+3. Start the container `windows-firewall-backend` bound to **fixed port `8090`**.
+4. Poll `http://localhost:8090/api/health` until healthy.
+5. Automatically open **Google Chrome** to `http://localhost:8090`.
 
 ---
 
@@ -42,11 +42,12 @@ docker build -t windows-firewall-security-check:latest .
 ```
 
 ### 2. Start the Backend Container
-Run the container in detached mode on the fixed port `8080`:
+Run the container in detached mode on the fixed port `8090`:
 ```bash
 docker run -d \
   --name windows-firewall-backend \
-  -p 8080:8080 \
+  -p 8090:8080 \
+  -p 8088:8080 \
   --restart unless-stopped \
   windows-firewall-security-check:latest
 ```
@@ -60,7 +61,7 @@ docker ps --filter "name=windows-firewall-backend"
 ```
 Or query the healthcheck endpoint:
 ```bash
-curl http://localhost:8080/api/health
+curl http://localhost:8090/api/health
 ```
 Expected output:
 ```json
@@ -77,7 +78,7 @@ Expected output:
 ### 4. Open in Browser
 Open Google Chrome and navigate to:
 ```
-http://localhost:8080
+http://localhost:8090
 ```
 
 ### 5. Stop or Restart Container

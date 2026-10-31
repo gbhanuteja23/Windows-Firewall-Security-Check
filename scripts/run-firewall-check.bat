@@ -7,11 +7,11 @@ cls
 echo ==============================================================================
 echo        WINDOWS FIREWALL SECURITY CHECK - 1-CLICK LAUNCHER
 echo        Backend Host: WSL 2 Ubuntu 22.04 Docker Container
-echo        Fixed Port  : 8080
+echo        Fixed Port  : 8090
 echo ==============================================================================
 echo.
 
-set PORT=8080
+set PORT=8090
 set CONTAINER_NAME=windows-firewall-backend
 set IMAGE_NAME=windows-firewall-security-check:latest
 set URL=http://localhost:%PORT%

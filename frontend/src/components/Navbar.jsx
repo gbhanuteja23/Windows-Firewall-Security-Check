@@ -33,7 +33,7 @@ export default function Navbar({
                 <Server className="h-3 w-3 text-emerald-400" />
                 <span>Backend:</span>
                 <span className="font-mono text-emerald-300 font-medium">
-                  WSL2 Ubuntu 22.04 Docker (Port 8080)
+                  WSL2 Ubuntu 22.04 Docker (Port 8090)
                 </span>
                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
               </div>
