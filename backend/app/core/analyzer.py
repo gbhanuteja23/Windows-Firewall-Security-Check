@@ -238,7 +238,7 @@ def analyze_firewall_configuration(
                         description=f"Rule '{rule.display_name}' allows inbound connections for all protocols and ports without IP restrictions.",
                         impact="Completely circumvents firewall boundary protections for listening services.",
                         recommendation=f"Delete or disable rule '{rule.name}' or constrain to explicit application and subnet.",
-                        remediation_cmd_ps=f"Disable-NetFirewallRule -Name '{rule.name}'",
+                        remediation_cmd_ps=f"Get-NetFirewallRule -DisplayName '{rule.display_name}' -ErrorAction SilentlyContinue | Disable-NetFirewallRule",
                         remediation_cmd_netsh=f"netsh advfirewall firewall set rule name='{rule.display_name}' new enable=no",
                     )
                 )
@@ -276,7 +276,7 @@ def analyze_firewall_configuration(
                                 description=f"Rule '{rule.display_name}' allows inbound traffic on port {clean_port} ({port_name}) from unrestricted remote addresses.",
                                 impact=port_info["impact"],
                                 recommendation=port_info["rec"],
-                                remediation_cmd_ps=f"Disable-NetFirewallRule -Name '{rule.name}'",
+                                remediation_cmd_ps=f"Get-NetFirewallRule -DisplayName '{rule.display_name}' -ErrorAction SilentlyContinue | Disable-NetFirewallRule",
                                 remediation_cmd_netsh=f"netsh advfirewall firewall set rule name='{rule.display_name}' new enable=no",
                             )
                         )
@@ -301,7 +301,7 @@ def analyze_firewall_configuration(
                         description=f"Rule '{rule.display_name}' has Edge Traversal explicitly enabled for inbound traffic.",
                         impact="Packets can bypass perimeter NAT routers directly to the host using Teredo tunneling.",
                         recommendation="Disable Edge Traversal unless explicitly required by an enterprise gateway.",
-                        remediation_cmd_ps=f"Set-NetFirewallRule -Name '{rule.name}' -EdgeTraversalPolicy Block",
+                        remediation_cmd_ps=f"Get-NetFirewallRule -DisplayName '{rule.display_name}' -ErrorAction SilentlyContinue | Set-NetFirewallRule -EdgeTraversalPolicy Block",
                         remediation_cmd_netsh=f"netsh advfirewall firewall set rule name='{rule.display_name}' new edge=no",
                     )
                 )
